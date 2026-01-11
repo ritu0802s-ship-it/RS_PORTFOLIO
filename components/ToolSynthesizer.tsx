@@ -1,19 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Sparkles, Zap, RotateCcw, BrainCircuit, Coffee, Star, Filter } from 'lucide-react';
+import React, { useState } from 'react';
+import { Sparkles, Zap, RotateCcw, BrainCircuit, Coffee, Star } from 'lucide-react';
 import { TOOLS } from '../constants';
 import { getToolSynergyInsight } from '../services/geminiService';
 
 const ToolSynthesizer: React.FC = () => {
   const [selectedTools, setSelectedTools] = useState<string[]>([]);
-  const [activeFilter, setActiveFilter] = useState<string>('All');
   const [insight, setInsight] = useState<string | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
 
-  const categories = ['All', 'Strategy', 'Marketing', 'Management', 'Technical'];
-
-  const filteredTools = activeFilter === 'All' 
-    ? TOOLS 
-    : TOOLS.filter(t => t.category === activeFilter);
+  // Filter functionality removed as per request
+  const allTools = TOOLS;
 
   const toggleTool = (toolName: string) => {
     if (selectedTools.includes(toolName)) {
@@ -120,32 +116,9 @@ const ToolSynthesizer: React.FC = () => {
         )}
       </div>
 
-      {/* Category Filter Bar */}
-      <div className="mb-10 flex flex-col items-center gap-6">
-        <div className="flex items-center gap-2 text-slate-400">
-          <Filter className="w-3.5 h-3.5" />
-          <span className="text-[10px] font-black uppercase tracking-widest">Filter by category</span>
-        </div>
-        <div className="flex flex-wrap justify-center gap-3">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveFilter(cat)}
-              className={`px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.15em] transition-all duration-300 ${
-                activeFilter === cat
-                  ? 'bg-ritu-green text-white shadow-lg shadow-ritu-green/10 scale-105'
-                  : 'bg-white text-slate-500 border border-slate-100 hover:border-ritu-gold/40 hover:text-ritu-green'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-      </div>
-
       {/* Tools Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-        {filteredTools.map((tool) => {
+        {allTools.map((tool) => {
           const isSelected = selectedTools.includes(tool.name);
           return (
             <button

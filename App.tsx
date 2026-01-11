@@ -5,7 +5,6 @@ import InteractiveAssistant from './components/InteractiveAssistant';
 import ScrollToTop from './components/ScrollToTop';
 import LoadingScreen from './components/LoadingScreen';
 import SectionDivider from './components/SectionDivider';
-import ToolSynthesizer from './components/ToolSynthesizer';
 import ExperienceCard from './components/ExperienceCard';
 import ExpertiseCard from './components/ExpertiseCard';
 import EducationCard from './components/EducationCard';
@@ -247,17 +246,6 @@ const App: React.FC = () => {
             </section>
 
             <SectionDivider ref={addToRefs} className="!py-0" />
-
-            {/* Tool synthesizer */}
-            <section id="skills" className="py-8 bg-[#FDFBF7]">
-              <div className="max-w-7xl mx-auto px-6">
-                <div className="mb-6 text-center">
-                  <span className="text-ritu-gold text-[10px] font-bold tracking-[0.2em] uppercase mb-2 block font-sans">The Toolbox</span>
-                  <h2 className="text-2xl md:text-3xl serif text-slate-900">Technical <span className="text-ritu-gold italic">Stack.</span></h2>
-                </div>
-                <ToolSynthesizer />
-              </div>
-            </section>
 
             <section id="contact" className="py-10 bg-white text-center">
               <div className="max-w-3xl mx-auto px-6">
